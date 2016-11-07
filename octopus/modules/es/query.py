@@ -119,6 +119,7 @@ def query(path=None):
         resp = make_response(json.dumps(res))
     else:
         abort(400)
-
+    if 'status' in res.keys():
+        abort(res['status'])
     resp.mimetype = "application/json"
     return resp
