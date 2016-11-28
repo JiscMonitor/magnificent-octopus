@@ -4,7 +4,6 @@
     }
 %}
 
-<div class="alert-messages" >
 
     {% with messages = get_flashed_messages(with_categories=True) %}
         {% if messages %}
@@ -17,17 +16,17 @@
                     {% set message_has_url = True %}
                 {% endif %}
 
+                <div class="row">
+                    <article class="box box--danger box--padding-large">
+                        <div class="box__inner">
 
-                <div class="alert alert-{{CATEGORY_MAP.get(category, category)}} fade in" data-alert="alert">
-                    <a class="close" data-dismiss="alert" href="#">&times;</a>
-                    {% if message_has_url %}
-                        {{ message | safe }}
-                    {% else %}
-                        {{ message }}
-                    {% endif %}
+                        {% if message_has_url %}
+                            {{ message | safe }}
+                        {% else %}
+                            {{ message }}
+                        {% endif %}</div>
+                    </article>
                 </div>
             {% endfor %}
         {% endif %}
     {% endwith %}
-
- </div>
