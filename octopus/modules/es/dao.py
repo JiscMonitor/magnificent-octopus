@@ -77,6 +77,7 @@ class ESDAO(esprit.dao.DomainObject):
 
     @classmethod
     def mappings(cls):
+        """
         return {
             cls.__type__ : mappings.for_type(
                 cls.__type__,
@@ -87,6 +88,12 @@ class ESDAO(esprit.dao.DomainObject):
                     ]
                 )
             )
+        }
+        """
+        return {
+            cls.__type__ : {
+                cls.__type__ : app.config.get("ELASTIC_SEARCH_DEFAULT_MAPPING")
+            }
         }
 
     @classmethod
